@@ -1,25 +1,28 @@
 const textarea = document.getElementById("txinput");
 const counter = document.getElementById("counter");
-const postbutton = document.getElementById("postButton");
+const postButton = document.getElementById("postButton");
 const maxLength = 280;
 
-const counterState =() => {
+const counterState = () => {
+  let textWritten = textarea.value;
 
-    let textWrittn = textarea.value;
-    if(textWrittn.length > maxLength){
-        textWrittn = textWrittn(0, maxLength);
-        textarea.value = textWrittn;
-    }
-    const reminder = maxLength - textWrittn.length;
-    counter.textContent = `${reminder} characters remaining`;
+  if (textWritten.length > maxLength) {
+    textWritten = textWritten.slice(0, maxLength);
+    textarea.value = textWritten;
+  }
 
-    if (reminder < 0){
-        counter.classList.add("exceeded");
-        postbutton.disabled = true;
-    } else{
-        counter.addList.remove("exceede");
-        postbutton.disabled = false;
-    }
-}
+  const remaining = maxLength - textWritten.length;
+
+  counter.textContent = `${remaining} characters remaining`;
+
+  if (remaining <= 20) {
+    counter.classList.add("warning");
+  } else {
+    counter.classList.remove("warning");
+  }
+
+  postButton.disabled = textWritten.length === 0;
+};
+
 textarea.addEventListener("input", counterState);
 counterState();
