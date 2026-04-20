@@ -11,9 +11,10 @@ const counterState = () => {
     textarea.value = textWritten;
   }
 
-  const remaining = maxLength - textWritten.length;
+  const length = textWritten.length;
+  const remaining = maxLength - length;
 
-  counter.textContent = `${textWritten.length}/${maxLength}`;
+  counter.textContent = `${length}/${maxLength}`;
 
   if (remaining <= 20 && remaining > 0) {
     counter.classList.add("warning");
@@ -21,12 +22,13 @@ const counterState = () => {
     counter.classList.remove("warning");
   }
 
-  
-  if(remaining === 0){
+  if (remaining === 0) {
     counter.classList.add("limit");
-  } else{
+  } else {
     counter.classList.remove("limit");
   }
+
+  postButton.disabled = length === 0 || length === maxLength;
 };
 
 textarea.addEventListener("input", counterState);
