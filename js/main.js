@@ -13,15 +13,20 @@ const counterState = () => {
 
   const remaining = maxLength - textWritten.length;
 
-  counter.textContent = `${remaining} characters remaining`;
+  counter.textContent = `${textWritten.length}/${maxLength}`;
 
-  if (remaining <= 20) {
+  if (remaining <= 20 && remaining > 0) {
     counter.classList.add("warning");
   } else {
     counter.classList.remove("warning");
   }
 
-  postButton.disabled = textWritten.length === 0;
+  
+  if(remaining === 0){
+    counter.classList.add("limit");
+  } else{
+    counter.classList.remove("limit");
+  }
 };
 
 textarea.addEventListener("input", counterState);

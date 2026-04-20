@@ -1,22 +1,35 @@
+body {
+    background: #f5f7fa;
+    font-family: Arial, sans-serif;
+}
 .container {
     width: 400px;
     margin: 40px auto;
     font-family: Arial, sans-serif;
 }
+.card {
+    width: 420px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
 textarea {
     width: 100%;
-    height: 120px;
-    padding: 10px;
-    resize: none;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+    height: 140px;
+    padding: 12px;
+    font-size: 15px;
+    border: 2px solid #dbe2ea;
+    border-radius: 10px;
     outline: none;
+    resize: none;
     transition: border 0.2s;
 }
 
 textarea:focus {
-    border-color: #1da1f2;
+    border-color: #dbe2ea;
 }
 .bottom-bar {
     display: flex;
@@ -25,9 +38,11 @@ textarea:focus {
     margin-top: 8px;
 }
 #counter {
+    position: absolute;
     font-size: 13px;
-    color: #555;
+    color: #6b7280;
     transition: color 0.2s;
+    right: 16px;
 }
 
 #counter.warning {
